@@ -1,13 +1,15 @@
 export const profile = {
   name: "Jahid Hasan Rimel",
   role: "Full Stack Developer",
-  headline: "Design-led MERN & Next.js developer building polished, scalable web experiences.",
+  headline:
+    "Design-led MERN and Next.js developer building polished, scalable, conversion-focused web experiences.",
   location: "Bangladesh",
   email: "hello@example.com",
   phone: "+880 1XXX-XXXXXX",
-  availability: "Available for freelance & full-time roles",
+  availability: "Available for freelance and full-time roles",
   summary:
-    "I create fast, accessible, and conversion-focused web applications with React, Next.js, Node.js, Express, MongoDB, and modern UI systems.",
+    "I create fast, accessible, and visually refined web applications with React, Next.js, Node.js, Express, MongoDB, Tailwind CSS, and production-minded UI systems.",
+  tools: ["Next.js", "React", "TypeScript", "Node.js", "MongoDB", "Tailwind"],
   socials: [
     { label: "GitHub", href: "https://github.com/" },
     { label: "LinkedIn", href: "https://linkedin.com/" },

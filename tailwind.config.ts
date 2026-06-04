@@ -23,11 +23,15 @@ const config: Config = {
         ring: "hsl(var(--ring))"
       },
       boxShadow: {
-        glow: "0 0 80px rgba(255,255,255,0.12)",
-        soft: "0 20px 80px rgba(15,23,42,0.10)"
+        glass: "0 24px 90px rgba(0,0,0,0.35)",
+        glow: "0 0 110px rgba(255,255,255,0.16)",
+        iridescent: "0 0 80px rgba(125, 92, 255, 0.24), 0 0 120px rgba(45, 212, 191, 0.10)"
       },
       backgroundImage: {
-        "hero-grid": "linear-gradient(to right, rgba(148,163,184,0.12) 1px, transparent 1px), linear-gradient(to bottom, rgba(148,163,184,0.12) 1px, transparent 1px)"
+        "liquid-grid":
+          "linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)",
+        "glass-rainbow":
+          "linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06) 35%, rgba(56,189,248,0.14) 52%, rgba(168,85,247,0.16) 76%, rgba(255,255,255,0.12))"
       }
     }
   },

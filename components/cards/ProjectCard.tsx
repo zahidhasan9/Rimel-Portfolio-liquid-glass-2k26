@@ -1,7 +1,11 @@
-import Link from "next/link";
+"use client";
+
+import { memo } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { m } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { itemVariants, microSpring } from "@/components/motion/variants";
 
 export type ProjectCardProps = {
   title: string;
@@ -12,28 +16,63 @@ export type ProjectCardProps = {
   accent: string;
 };
 
-export default function ProjectCard({ title, category, description, stack, href, accent }: ProjectCardProps) {
+function ProjectCard({ title, category, description, stack, href, accent }: ProjectCardProps) {
   return (
-    <Card className="group overflow-hidden p-4 transition duration-300 hover:-translate-y-2 hover:shadow-glow">
-      <div className={`relative h-48 rounded-[1.5rem] bg-gradient-to-br ${accent} p-6 text-white`}>
-        <div className="absolute inset-0 bg-hero-grid bg-[size:28px_28px] opacity-30" />
-        <div className="relative flex h-full flex-col justify-between">
-          <Badge className="w-fit bg-white/20 text-white backdrop-blur-xl">{category}</Badge>
-          <div>
-            <p className="text-sm text-white/70">Featured Project</p>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight">{title}</h3>
+    <m.a
+      href={href}
+      variants={itemVariants}
+      whileHover={{ y: -8, scale: 1.015 }}
+      whileTap={{ scale: 0.985 }}
+      transition={microSpring}
+      className="group glass-surface block rounded-[2rem] p-1 outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+      aria-label={`View ${title} project`}
+    >
+      <article className="relative z-10 flex h-full min-h-[410px] flex-col overflow-hidden rounded-[1.75rem] p-6">
+        <div className={cn("absolute inset-x-0 top-0 h-44 bg-gradient-to-br opacity-70 blur-2xl", accent)} />
+        <div className="absolute right-6 top-6 z-10 grid h-11 w-11 place-items-center rounded-full border border-white/[0.16] bg-white/[0.08] text-white backdrop-blur-2xl">
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </div>
+        <div className="relative z-10 mb-7 h-44 overflow-hidden rounded-[1.5rem] border border-white/[0.12] bg-black/[0.30] p-4 shadow-inner">
+          <div className="h-full rounded-[1.15rem] border border-white/[0.12] bg-white/[0.055] p-4 backdrop-blur-2xl">
+            <div className="flex gap-2">
+              <span className="h-3 w-3 rounded-full bg-white/[0.35]" />
+              <span className="h-3 w-3 rounded-full bg-white/[0.20]" />
+              <span className="h-3 w-3 rounded-full bg-white/[0.12]" />
+            </div>
+            <div className="mt-8 space-y-3">
+              <div className="h-4 w-2/3 rounded-full bg-white/[0.24]" />
+              <div className="h-3 w-11/12 rounded-full bg-white/[0.12]" />
+              <div className="h-3 w-8/12 rounded-full bg-white/[0.10]" />
+            </div>
+            <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="h-12 rounded-2xl bg-white/[0.10]" />
+              <div className="h-12 rounded-2xl bg-white/[0.14]" />
+              <div className="h-12 rounded-2xl bg-white/[0.08]" />
+            </div>
           </div>
         </div>
-      </div>
-      <div className="p-4">
-        <p className="text-sm leading-6 text-zinc-500">{description}</p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          {stack.map((item) => <Badge key={item} variant="soft">{item}</Badge>)}
+
+        <Badge variant="outline" className="relative z-10 w-fit">
+          {category}
+        </Badge>
+        <h3 className="relative z-10 mt-5 text-2xl font-semibold tracking-[-0.04em] text-white">
+          {title}
+        </h3>
+        <p className="relative z-10 mt-4 flex-1 text-sm leading-7 text-white/[0.62]">{description}</p>
+
+        <div className="relative z-10 mt-6 flex flex-wrap gap-2">
+          {stack.map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-white/[0.10] bg-white/[0.055] px-3 py-1.5 text-xs font-medium text-white/[0.68]"
+            >
+              {item}
+            </span>
+          ))}
         </div>
-        <Link href={href} className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-zinc-950">
-          View case study <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-        </Link>
-      </div>
-    </Card>
+      </article>
+    </m.a>
   );
 }
+
+export default memo(ProjectCard);

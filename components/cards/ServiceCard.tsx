@@ -1,14 +1,36 @@
-import { Card } from "@/components/ui/card";
-import type { LucideIcon } from "lucide-react";
+"use client";
 
-export default function ServiceCard({ title, description, icon: Icon }: { title: string; description: string; icon: LucideIcon }) {
+import { memo } from "react";
+import type { LucideIcon } from "lucide-react";
+import { m } from "framer-motion";
+import { itemVariants, microSpring } from "@/components/motion/variants";
+
+function ServiceCard({
+  title,
+  description,
+  icon: Icon
+}: {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+}) {
   return (
-    <Card className="p-7 transition duration-300 hover:-translate-y-2 hover:shadow-glow">
-      <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-950 text-white shadow-soft">
-        <Icon className="h-5 w-5" />
+    <m.article
+      variants={itemVariants}
+      whileHover={{ y: -8, scale: 1.012 }}
+      whileTap={{ scale: 0.99 }}
+      transition={microSpring}
+      className="glass-surface group rounded-[2rem] p-6"
+    >
+      <div className="relative z-10 grid h-14 w-14 place-items-center rounded-2xl border border-white/[0.16] bg-white/[0.07] text-white shadow-glow backdrop-blur-2xl">
+        <Icon size={24} aria-hidden="true" />
       </div>
-      <h3 className="text-xl font-semibold tracking-tight text-zinc-950">{title}</h3>
-      <p className="mt-3 text-sm leading-6 text-zinc-500">{description}</p>
-    </Card>
+      <h3 className="relative z-10 mt-7 text-xl font-semibold tracking-[-0.035em] text-white">
+        {title}
+      </h3>
+      <p className="relative z-10 mt-3 text-sm leading-7 text-white/[0.62]">{description}</p>
+    </m.article>
   );
 }
+
+export default memo(ServiceCard);

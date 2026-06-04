@@ -1,6 +1,6 @@
 {
-  "name": "professional-apple-liquid-glass-portfolio",
-  "version": "2.0.0",
+  "name": "professional-apple-portfolio",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "framer-motion": "^12.40.0",
     "lucide-react": "^0.468.0",
     "next": "14.2.30",
     "react": "18.3.1",
