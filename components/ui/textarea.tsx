@@ -9,6 +9,7 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, React.TextareaHTMLAttribu
   ({ className, ...props }, ref) => (
     <m.textarea
       ref={ref}
+      {...(props as any)}
       whileFocus={{ scale: 1.01 }}
       transition={microSpring}
       className={cn(

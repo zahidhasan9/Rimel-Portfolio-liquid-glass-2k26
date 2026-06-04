@@ -9,6 +9,7 @@ const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLI
   ({ className, type, ...props }, ref) => (
     <m.input
       ref={ref}
+      {...props as any}
       type={type}
       whileFocus={{ scale: 1.01 }}
       transition={microSpring}
