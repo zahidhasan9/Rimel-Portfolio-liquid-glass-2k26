@@ -9,6 +9,13 @@ import { Card } from "@/components/ui/card";
 import { education, experience } from "@/data/resume";
 import { itemVariants, listVariants } from "@/components/motion/variants";
 
+export type EducationItem = {
+  degree: string;
+  institute: string;
+  period: string;
+};
+
+
 export default function ResumeSection() {
   return (
     <section className="py-16 sm:py-24" id="resume">
@@ -62,7 +69,7 @@ export default function ResumeSection() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
               >
-                {education.map((item) => (
+                {(education as EducationItem[]).map((item) => (
                   <m.article key={`${item.degree}-${item.period}`} variants={itemVariants} className="rounded-[1.6rem] border border-white/[0.10] bg-white/[0.045] p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/[0.38]">{item.period}</p>
                     <h4 className="mt-3 text-lg font-semibold text-white">{item.degree}</h4>

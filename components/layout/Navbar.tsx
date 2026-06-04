@@ -12,6 +12,7 @@ import { microSpring } from "@/components/motion/variants";
 const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
   { href: "/projects", label: "Projects" },
   { href: "/services", label: "Services" },
   { href: "/contact", label: "Contact" }
