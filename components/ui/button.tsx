@@ -43,6 +43,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <m.button
         ref={ref}
+        {...(props as any)}
         className={cn(buttonVariants({ variant, size }), className)}
         whileHover={{ y: -2, scale: 1.015 }}
         whileTap={{ y: 0, scale: 0.98 }}
@@ -66,6 +67,7 @@ const LinkButton = React.forwardRef<HTMLAnchorElement, LinkButtonProps>(
     return (
       <m.a
         ref={ref}
+        {...(props as any)}
         className={cn(buttonVariants({ variant, size }), className)}
         whileHover={{ y: -2, scale: 1.015 }}
         whileTap={{ y: 0, scale: 0.98 }}
